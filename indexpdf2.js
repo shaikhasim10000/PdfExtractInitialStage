@@ -14,6 +14,21 @@ function parsePdfData(pdfContent) {
         if(checkPositionXandY(67.5,202.5,singleObject)){
             finalpdfObject.soldTo=getStringFromObject(singleObject);
         }
+        if(checkPositionXandY(67.5,211.5,singleObject)){
+            finalpdfObject.soldToStreet1=getStringFromObject(singleObject);
+        }
+        if(checkPositionXandY(67.5,220.5,singleObject)){
+            finalpdfObject.soldToStreet2=getStringFromObject(singleObject);
+        }
+        if(checkPositionXandY(325,203,singleObject)){
+            finalpdfObject.shipTo=getStringFromObject(singleObject);
+        }
+        if(checkPositionXandY(325,213,singleObject)){
+            finalpdfObject.shipToStreet1=getStringFromObject(singleObject);
+        }
+        if(checkPositionXandY(325,223,singleObject)){
+            finalpdfObject.shipToStreet2=getStringFromObject(singleObject);
+        }
 
     });
 
