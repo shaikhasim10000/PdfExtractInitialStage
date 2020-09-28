@@ -1,7 +1,7 @@
 const PDFExtract = require('pdf.js-extract').PDFExtract;
 const pdfExtract = new PDFExtract();
 const options = {}; /* see below */
-pdfExtract.extract('pdf2[2].pdf', options, (err, data) => {
+pdfExtract.extract('pdf2[3].pdf', options, (err, data) => {
     if (err) return console.log(err);
     // console.log(JSON.stringify(data));
     parsePdfData(data);
@@ -11,6 +11,13 @@ function parsePdfData(pdfContent) {
     let pageContent = pdfContent.pages[0].content;
     let finalpdfObject={};
     pageContent.forEach(singleObject => {
+
+        if(checkPositionXandY(399.984,65.5,singleObject)){
+            finalpdfObject.invoiceDate=getStringFromObject(singleObject);
+        }
+        if(checkPositionXandY(549.156,65.5,singleObject)){
+            finalpdfObject.invoiceNumber=getStringFromObject(singleObject);
+        }
         if(checkPositionXandY(67.5,202.5,singleObject)){
             finalpdfObject.soldTo=getStringFromObject(singleObject);
         }
