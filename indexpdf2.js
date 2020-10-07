@@ -10,7 +10,7 @@ pdfExtract.extract('pdf2[3].pdf', options, (err, data) => {
 function parsePdfData(pdfContent) {
     let pageContent = pdfContent.pages[0].content;
     let finalpdfObject = {};
-    getItems(pageContent);
+    finalpdfObject.items=getItems(pageContent);
     pageContent.forEach(singleObject => {
 
         if(checkPositionXandY(399.984,65.5,singleObject)){
@@ -74,7 +74,7 @@ function parsePdfData(pdfContent) {
 
     });
 
-    //console.log(JSON.stringify(finalpdfObject));
+    console.log(JSON.stringify(finalpdfObject));
 }
 
 function getStringFromObject(pdfContentObject) {
@@ -200,8 +200,8 @@ function getItems(pageContent) {
             }
         }
     }
-
-    console.log(items);
+    return items;
+    //console.log(items);
 
 }
 
